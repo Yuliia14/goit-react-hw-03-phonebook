@@ -39,11 +39,13 @@ export default class App extends Component {
   }
 
   getVisibleContacts = () => {
-    const { contacts, filter } = this.state;
     
-    return contacts.filter(contact =>
-       contact.name.toLowerCase().includes(filter.toLowerCase()),
-    )
+    const { contacts, filter } = this.state;
+    if(contacts.length > 0) {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()),
+     )
+    }
   }
   componentDidMount() {
     const contacts = localStorage.getItem('contacts')
